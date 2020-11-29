@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/event-meet/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/event-meet/static/js/main.8b12fe92.chunk.js",
+    "main.js.map": "/event-meet/static/js/main.8b12fe92.chunk.js.map",
+    "runtime-main.js": "/event-meet/static/js/runtime-main.8439b3f1.js",
+    "runtime-main.js.map": "/event-meet/static/js/runtime-main.8439b3f1.js.map",
+    "static/js/2.6d3e156e.chunk.js": "/event-meet/static/js/2.6d3e156e.chunk.js",
+    "static/js/2.6d3e156e.chunk.js.map": "/event-meet/static/js/2.6d3e156e.chunk.js.map",
+    "static/js/3.48001b0e.chunk.js": "/event-meet/static/js/3.48001b0e.chunk.js",
+    "static/js/3.48001b0e.chunk.js.map": "/event-meet/static/js/3.48001b0e.chunk.js.map",
+    "index.html": "/event-meet/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/event-meet/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.6d3e156e.chunk.js.LICENSE.txt": "/event-meet/static/js/2.6d3e156e.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/event-meet/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8439b3f1.js",
+    "static/js/2.6d3e156e.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.8b12fe92.chunk.js"
+  ]
+}
