@@ -30,7 +30,7 @@ class Event extends Component {
           { this.state.seeMore && (
             <div className = "more">
               <p> Organizer : <span className = "organizer">{ event.organizer.email }</span> </p>
-              <p> Event Page : <span className = "eventLink">{ event.htmlLink }</span></p>
+              <p> Event Page : <a className = "eventLink" href = { event.htmlLink } target = "_blank" > See Calendar Event </a></p>
               <p> Description : <span className = "description">{ event.description }</span></p>
             </div>
           )}

@@ -36,7 +36,7 @@ describe( '<Event /> component' , () => {
     expect( EventWrapper.find( '.location' ).text()).toBe( event.location );
     expect( EventWrapper.find( '.description' ).text()).toBe( event.description );
     expect( EventWrapper.find( '.organizer' ).text()).toBe( event.organizer.email );
-    expect( EventWrapper.find( '.eventLink').text()).toBe( event.htmlLink );
+    expect( EventWrapper.find( '.eventLink')).toHaveLength( 1 );
   });
 
   test( 'hide details on click' , () => {
