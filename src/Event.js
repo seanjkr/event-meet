@@ -25,7 +25,7 @@ class Event extends Component {
         <h2 className = "title">{ event.summary }</h2>
         <p> Time : <span className = "time">{ event.start.dateTime }</span> </p>
         <p> Location : <span className = "location">{ event.location }</span></p>
-        <button className = "seeMore" onClick = {() => this.handleSeeMore() } > See More </button>
+        <button className = "details-btn" onClick = {() => this.handleSeeMore() } > See More </button>
         <div>
           { this.state.seeMore && (
             <div className = "more">
