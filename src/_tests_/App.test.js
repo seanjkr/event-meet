@@ -72,4 +72,53 @@ describe( '<App /> integration' , () => {
     AppWrapper.unmount();
   });
 
+  test( 'App passes "eventNumber" state as prop to NumberOfEvents' , () => {
+    const AppWrapper = mount( <App /> );
+    const AppEventNumberState = AppWrapper.state( 'eventNumber' );
+    expect( AppEventNumberState ).not.toEqual( undefined );
+    expect( AppWrapper.find( NumberOfEvents ).props().eventNumber).toEqual( AppEventNumberState );
+    AppWrapper.unmount();
+  });
+
+  test( 'user pressing enter in NumberOfEvents input box updates apps "eventNumber" state' , async () => {
+    const AppWrapper = mount( <App /> );
+    const suggestionItems = AppWrapper.find( CitySearch ).find( '.suggestions li' );
+    await suggestionItems.at( suggestionItems.length -1 ).simulate( 'click' );
+    await getEvents();
+    const numberUpdate = { target : { value : 4 } };
+    const NumberOfEventsUpdater = AppWrapper.find( NumberOfEvents ).find( '.numberOfEvents' );
+    NumberOfEventsUpdater.simulate( 'change' , numberUpdate );
+    NumberOfEventsUpdater.simulate( 'keypress' , { key : 'Enter' });
+    expect( AppWrapper.state( 'eventNumber' )).toEqual( 4 );
+    AppWrapper.unmount();
+  });
+
+  test( 'number of events shown matches "eventNumber" state, including when changed by user' , async () => {
+    const AppWrapper = mount( <App /> );
+    const suggestionItems = AppWrapper.find( CitySearch ).find( '.suggestions li' );
+    await suggestionItems.at( suggestionItems.length -1 ).simulate( 'click' );
+    await getEvents();
+    const numberUpdate = { target : { value : Math.floor( Math.random() * 4 ) } };
+    const NumberOfEventsUpdater = AppWrapper.find( NumberOfEvents ).find( '.numberOfEvents' );
+    NumberOfEventsUpdater.simulate( 'change' , numberUpdate );
+    NumberOfEventsUpdater.simulate( 'keypress' , { key : 'Enter' });
+    const EventNumber = AppWrapper.state( 'eventNumber' );
+    expect( AppWrapper.state().events).toHaveLength( EventNumber );
+    AppWrapper.unmount();
+  });
+
+  test( 'having fewer available events than "eventNumber" state changes state to be equal to length of events array' , async () => {
+    const AppWrapper = mount( <App /> );
+    const suggestionItems = AppWrapper.find( CitySearch ).find( '.suggestions li' );
+    await suggestionItems.at( suggestionItems.length -1 ).simulate( 'click' );
+    await getEvents();
+    const numberUpdate = { target : { value : 6 }};
+    const NumberOfEventsUpdater = AppWrapper.find( NumberOfEvents ).find( '.numberOfEvents' );
+    NumberOfEventsUpdater.simulate( 'change' , numberUpdate );
+    NumberOfEventsUpdater.simulate( 'keypress' , { key : 'Enter' });
+    const EventNumber = AppWrapper.state( 'eventNumber' );
+    expect( AppWrapper.state().events).toHaveLength( EventNumber );
+    AppWrapper.unmount();
+  });
+
 });
