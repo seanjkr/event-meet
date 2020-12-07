@@ -20,7 +20,7 @@ describe( '<Event /> component' , () => {
     expect( EventWrapper.find( '.title' ).text()).toBe( event.summary );
     expect( EventWrapper.find( '.time' ).text()).toBe( event.start.dateTime );
     expect( EventWrapper.find( '.location' ).text()).toBe( event.location );
-    expect( EventWrapper.find( '.seeMore' )).toHaveLength(1);
+    expect( EventWrapper.find( '.details-btn' )).toHaveLength(1);
   });
 
   test( 'hide details by default' , () => {
@@ -30,7 +30,7 @@ describe( '<Event /> component' , () => {
   });
 
   test( 'show more information on click' , () => {
-    EventWrapper.find( '.seeMore' ).simulate( 'click' );
+    EventWrapper.find( '.details-btn' ).simulate( 'click' );
     expect( EventWrapper.find( '.title' ).text()).toBe( event.summary );
     expect( EventWrapper.find( '.time' ).text()).toBe( event.start.dateTime );
     expect( EventWrapper.find( '.location' ).text()).toBe( event.location );
@@ -43,7 +43,7 @@ describe( '<Event /> component' , () => {
     EventWrapper.setState({
       seeMore : true
     })
-    EventWrapper.find( '.seeMore').simulate( 'click' );
+    EventWrapper.find( '.details-btn').simulate( 'click' );
     expect( EventWrapper.find( '.title' ).text()).toBe( event.summary );
     expect( EventWrapper.find( '.time' ).text()).toBe( event.start.dateTime );
     expect( EventWrapper.find( '.location' ).text()).toBe( event.location );
