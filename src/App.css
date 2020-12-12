@@ -40,13 +40,30 @@ input[type="number"] {
   width: 250px;
 }
 
-.CitySearch {
+.CitySearch, .eventNumber {
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
   max-width: 300px;
   margin: auto;
   position: relative;
+  top: 30px;
+}
+
+.eventNumber {
+  margin-bottom: 60px;
+}
+
+.info-alert {
+  top: 20px;
+  position: fixed;
+  align-self: center;
+}
+
+.error-alert {
+  top: 150px;
+  position: fixed;
+  align-self: center;
 }
 
 .suggestions {
@@ -127,11 +144,6 @@ input[type="number"] {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {

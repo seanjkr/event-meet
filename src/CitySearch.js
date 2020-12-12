@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
+import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
   state = {
-    query : '',
-    suggestions : [],
-    showSuggestions : false
+    query: '',
+    suggestions: [],
+    showSuggestions: false,
+    infoText: ''
   }
 
   handleInputChange = ( event ) => {
     const value = event.target.value;
+    this.setState({
+      showSuggestions: true,
+    });
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf( value.toUpperCase() ) > -1;
     });
-    this.setState({
-      query : value,
-      suggestions,
-    });
+    if (suggestions.length === 0) {
+      this.setState({
+        query: value,
+        infoText: 'No city found, try another',
+      });
+    } else {
+      return this.setState({
+        query: value,
+        suggestions: suggestions,
+        infoText: ''
+      });
+    }
   };
 
   handleItemClick = ( suggestion ) => {
     this.setState({ 
       query : suggestion,
-      showSuggestions : false
+      showSuggestions : false,
+      infoText: '',
     });
     this.props.updateEvents( suggestion );
   }
@@ -31,6 +45,9 @@ class CitySearch extends Component {
     return (
 
       <div className = "CitySearch">
+
+        <InfoAlert text={this.state.infoText} />
+
         <input 
           type = "text" 
           className = "city" 
@@ -38,6 +55,7 @@ class CitySearch extends Component {
           onChange = { this.handleInputChange }
           onFocus = { () => { this.setState({ showSuggestions : true }) }}
         />
+
         <ul className = "suggestions" style = { this.state.showSuggestions ? {}: { display : 'none'}} > 
           { this.state.suggestions.map(( suggestion ) => (
             <li key = { suggestion } onClick = { () => this.handleItemClick( suggestion )} >{ suggestion }</li>
@@ -46,6 +64,7 @@ class CitySearch extends Component {
             <b> See all cities </b>
           </li>
         </ul>
+
       </div>
     );
   }
