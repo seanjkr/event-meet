@@ -16,7 +16,6 @@ class Event extends Component {
 
   render() {
 
-    const seeMore = this.state.seeMore;
     const { event } = this.props;
 
     return (
@@ -30,7 +29,7 @@ class Event extends Component {
           { this.state.seeMore && (
             <div className = "more">
               <p> Organizer : <span className = "organizer">{ event.organizer.email }</span> </p>
-              <p> Event Page : <a className = "eventLink" href = { event.htmlLink } target = "_blank" > See Calendar Event </a></p>
+              <p> Event Page : <a className = "eventLink" href = { event.htmlLink } target = "_blank" rel="noreferrer"> See Calendar Event </a></p>
               <p> Description : <span className = "description">{ event.description }</span></p>
             </div>
           )}

@@ -67,7 +67,7 @@ const removeQuery = () => {
     var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname;
     window.history.pushState( '' , '' , newurl );
   } else {
-    var newurl = window.location.protocol + '//' + window.location.host;
-    window.history.pushState( '' , '' , newurl );
+    var newurl2 = window.location.protocol + '//' + window.location.host;
+    window.history.pushState( '' , '' , newurl2 );
   }
 };
