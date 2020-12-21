@@ -17,11 +17,20 @@ const checkToken = async ( accessToken ) => {
 
 export const getEvents = async () => {
   NProgress.start();
+
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return { events: JSON.parse(events).events, locations:   extractLocations(JSON.parse(events).events) };
+  }
+
   if ( window.location.href.startsWith( 'http://localhost')) {
     NProgress.done();
     return mockData;
   }
+  
   const token = await getAccessToken();
+
   if ( token ) {
     removeQuery();
     const url = `https://r0vrq5j21d.execute-api.us-east-2.amazonaws.com/dev/api/get-events/${token}`;

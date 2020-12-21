@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import { OfflineAlert } from './Alert';
 
 import { extractLocations , getEvents } from './api.js';
 
@@ -14,7 +15,8 @@ class App extends Component {
     events : [],
     viewedEvents : [],
     locations : [],
-    eventNumber : 32
+    eventNumber : 32,
+    offLineText : ''
   }
 
   componentDidMount() {
