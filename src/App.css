@@ -1,11 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
   text-align: center;
-  padding: 2% 5%;
+  padding: 1% 5% 5%;
 }
 
 .App * {
   box-sizing: border-box;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+header {
+  margin-bottom: 25px;
 }
 
 ul {
@@ -55,13 +63,13 @@ input[type="number"] {
 }
 
 .info-alert {
-  top: 20px;
+  top: 115px;
   position: fixed;
   align-self: center;
 }
 
 .error-alert {
-  top: 150px;
+  top: 245px;
   position: fixed;
   align-self: center;
 }
@@ -151,15 +159,13 @@ input[type="number"] {
   font-family: sans-serif;
 }
 
-.data-vis-wrapper {
+.data-vis {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-.data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
-  display: flex;
 }
+
 .recharts-surface {
   overflow: visible;
 }
@@ -217,7 +223,7 @@ input[type="number"] {
 }
 
 @media only screen and (min-width: 992px) {
-  .data-vis-wrapper {
+  .data-vis {
     flex-direction: row;
   }
   .data-vis-wrapper .recharts-responsive-container {
