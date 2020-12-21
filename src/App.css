@@ -66,6 +66,11 @@ input[type="number"] {
   align-self: center;
 }
 
+.offline-alert {
+  position: absolute;
+  right: 20px;
+}
+
 .suggestions {
   width: 250px;
   position: absolute;

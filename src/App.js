@@ -16,14 +16,17 @@ class App extends Component {
     viewedEvents : [],
     locations : [],
     eventNumber : 32,
-    offLineText : ''
+    offlineText : ''
   }
 
   componentDidMount() {
     this.mounted = true;
     getEvents().then(( events ) => {
-      if ( this.mounted ) {
-        this.setState({ viewedEvents: events , locations: extractLocations(events) });
+      if ( this.mounted && !navigator.onLine ) {
+        this.setState({ events : events, viewedEvents: events.slice( 0 , this.state.eventNumber ) , locations: extractLocations(events) , offlineText: 'You are offline' });
+      }
+      else {
+        this.setState({ events : events , viewedEvents: events.slice( 0 , this.state.eventNumber ) , locations: extractLocations(events) });
       }
     });
   }
@@ -67,6 +70,8 @@ class App extends Component {
     return (
 
       <div className = "App">
+
+        <OfflineAlert text = {this.state.offlineText } />
 
         <CitySearch locations = { this.state.locations } updateEvents = { this.updateEvents } />
 
